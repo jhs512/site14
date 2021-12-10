@@ -14,6 +14,12 @@
     내용 : {{question.content}}
 </div>
 
+<form action="{% url 'pybo:answer_create' question.id %}" method="POST">
+    {% csrf_token %}
+    <textarea name="content" id="content" rows="15"></textarea>
+    <input type="submit" value="답변등록">
+</form>
+
 <div>
     <button type="button" onclick="history.back();">뒤로가기</button>
 </div>

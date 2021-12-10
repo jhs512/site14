@@ -1,7 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
-from pybo.models import Question
+from .models import Question, Answer
 
 
 def index(request):
@@ -17,3 +17,12 @@ def detail(request, question_id):
     context = {'question' : question}
 
     return render(request, 'pybo/question_detail.html', context)
+
+def answer_create(request, question_id):
+    q = get_object_or_404(Question, pk = question_id)
+
+    answer = Answer(question = q, content = request.POST.get('content'), create_date = timezone.now())
+    answer.save()
+    print(f'answer : {answer}')
+
+    return redirect('pybo:detail', question_id = question_id)
