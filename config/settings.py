@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 로컬앱
+    'pybo.apps.PyboConfig',
 ]
 
 MIDDLEWARE = [
