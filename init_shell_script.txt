@@ -1,4 +1,24 @@
 from pybo.models import Question, Answer
 from django.utils import timezone
 
-q = Question(title = 'pybo가 무엇인가요?', content = 'pybo에 대해서 알고 싶습니다.', create_date = timezone.now())
+# 1번 질문 생성
+q = Question(subject = 'pybo가 무엇인가요?', content = 'pybo에 대해서 알고 싶습니다.', create_date = timezone.now())
+q.save() # INSERT 실행
+
+# 2번 질문 생성
+q = Question(subject='장고 모델 질문입니다.', content='id는 자동으로 생성되나요?', create_date=timezone.now())
+q.save() # INSERT 실행
+
+# 2번 질문의 제목을 수정
+q = Question.objects.get(id = 2)
+q.subject = 'Django Model Question'
+q.save() # UPDATE 실행
+
+# 1번 질문을 삭제
+q = Question.objects.get(id = 1)
+q.delete() # DELETE 실행
+
+# 2번 질문에 대한 답변을 생성
+q = Question.objects.get(id = 2)
+a = Answer(question = q, content = "네 자동으로 됩니다.", create_date = timezone.now())
+a.save()

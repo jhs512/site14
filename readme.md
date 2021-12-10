@@ -17,6 +17,12 @@
 - python manage.py migrate pybo
   - pybo 앱과 관련된, 현재 생성은 되어있지만, 아직 적용되지 않은 모든 마이그레이션이 실행됨
 
-## 커밋 4, 장고 쉘로 질문과 답변 생성
+## 커밋 4, Question 테이블의, title 칼럼명 subject로 수정, create_date 칼럼 추가
+- python manage.py makemigrations pybo
+  - 마이그레이션 0002 생성 
+- python manage.py migrate pybo
+
+## 커밋 5, 장고 쉘로 질문과 답변 생성
 - python manage.py shell
-- 
+- 2번 질문 생성
+- 2번 질문에 대한 답변(1번 답변) 생성
