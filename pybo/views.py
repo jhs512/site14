@@ -1,16 +1,12 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from pybo.models import Question
 
 
 def index(request):
-    questions = Question.objects.order_by('-id')
+    question_list = Question.objects.order_by('-id')
 
-    html = "<ul>\n"
+    context = {'question_list' : question_list}
 
-    for q in questions:
-        html += f'<li>{q.id} / {q.create_date} / {q.subject}</li>\n'
-
-    html += "</ul>\n"
-
-    return HttpResponse(html)
+    return render(request, 'pybo/question_list.html', context)
