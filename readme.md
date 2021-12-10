@@ -10,9 +10,13 @@
 
 ## 커밋 2, /pybo/ url에 pybo.views.index 함수 연결
 
-## 커밋 3, Question, Answer 모델생성
+## 커밋 3, Question, Answer 모델생성 후 마이그레이트
 - pybo/models.py 수정 후
 - python manage.py makemigrations pybo
   - DB에 pybo_question, pybo_answer 테이블 생성을 위한 마이그레이션 하나 생성(0001)
 - python manage.py migrate pybo
   - pybo 앱과 관련된, 현재 생성은 되어있지만, 아직 적용되지 않은 모든 마이그레이션이 실행됨
+
+## 커밋 4, 장고 쉘로 질문과 답변 생성
+- python manage.py shell
+- 
